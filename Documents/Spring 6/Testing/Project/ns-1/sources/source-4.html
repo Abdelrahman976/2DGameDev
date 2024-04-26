@@ -1,0 +1,379 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > CatalogController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.testingproject</a>
+</div>
+
+<h1>Coverage Summary for Class: CatalogController (com.example.testingproject)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CatalogController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/117)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.testingproject;
+&nbsp;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.FXMLLoader;
+&nbsp;import javafx.fxml.Initializable;
+&nbsp;import javafx.scene.Node;
+&nbsp;import javafx.scene.Parent;
+&nbsp;import javafx.scene.Scene;
+&nbsp;import javafx.scene.control.Label;
+&nbsp;import javafx.scene.control.Tab;
+&nbsp;import javafx.scene.input.MouseEvent;
+&nbsp;import javafx.scene.layout.AnchorPane;
+&nbsp;import javafx.scene.layout.GridPane;
+&nbsp;import javafx.scene.layout.Region;
+&nbsp;import javafx.scene.layout.VBox;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;import javafx.geometry.Insets;
+&nbsp;import javafx.stage.Stage;
+&nbsp;
+<b class="nc">&nbsp;public class CatalogController implements Initializable {</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private GridPane adventure;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private GridPane classic;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private GridPane fiction;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private GridPane history;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label logout;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private GridPane mystery;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Region navCart;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label orders;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private GridPane romance;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private GridPane science;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private VBox sideNav;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Tab tab1;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Tab tab2;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Tab tab3;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Tab tab4;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Tab tab5;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Tab tab6;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Tab tab7;
+&nbsp;
+&nbsp;    private GridPane grid;
+&nbsp;    private Catalog currList;
+&nbsp;
+<b class="nc">&nbsp;    Catalog classicCatalog = new Catalog();</b>
+<b class="nc">&nbsp;    Catalog romanceCatalog = new Catalog();</b>
+<b class="nc">&nbsp;    Catalog fictionCatalog = new Catalog();</b>
+<b class="nc">&nbsp;    Catalog adventureCatalog = new Catalog();</b>
+<b class="nc">&nbsp;    Catalog mysteryCatalog = new Catalog();</b>
+<b class="nc">&nbsp;    Catalog historyCatalog = new Catalog();</b>
+<b class="nc">&nbsp;    Catalog scienceCatalog = new Catalog();</b>
+&nbsp;
+&nbsp;    public void dataStored() {
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;The Great Gatsby&quot;, &quot;Classic&quot;, 10.99, 20, &quot;great_gatsby.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;Pride and Prejudice&quot;, &quot;Classic&quot;, 8.50, 15, &quot;pride_prejudice.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;To Kill a Mockingbird&quot;, &quot;Classic&quot;, 9.25, 12, &quot;to_kill_a_mockingbird.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;The Catcher in the Rye&quot;, &quot;Classic&quot;, 11.25, 15, &quot;catcher_in_the_rye.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;The Odyssey&quot;, &quot;Classic&quot;, 10.50, 18, &quot;odyssey.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;Jane Eyre&quot;, &quot;Classic&quot;, 9.75, 18, &quot;jane_eyre.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;Moby-Dick&quot;, &quot;Classic&quot;, 11.99, 20, &quot;moby_dick.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;War and Peace&quot;, &quot;Classic&quot;, 15.25, 25, &quot;war_and_peace.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;The Picture of Dorian Gray&quot;, &quot;Classic&quot;, 10.50, 15, &quot;dorian_gray.jpg&quot;));</b>
+<b class="nc">&nbsp;        classicCatalog.addItem(new Item(&quot;Wuthering Heights&quot;, &quot;Classic&quot;, 8.99, 22, &quot;wuthering_heights.jpg&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        romanceCatalog.addItem(new Item(&quot;Sense and Sensibility&quot;, &quot;Romance&quot;, 8.25, 18, &quot;sense_and_sensibility.jpg&quot;));</b>
+<b class="nc">&nbsp;        romanceCatalog.addItem(new Item(&quot;Emma&quot;, &quot;Romance&quot;, 9.50, 20, &quot;emma.jpg&quot;));</b>
+<b class="nc">&nbsp;        romanceCatalog.addItem(new Item(&quot;The Notebook&quot;, &quot;Romance&quot;, 7.25, 15, &quot;notebook.jpg&quot;));</b>
+<b class="nc">&nbsp;        romanceCatalog.addItem(new Item(&quot;Gone with the Wind&quot;, &quot;Romance&quot;, 12.99, 25, &quot;gone_with_the_wind.jpg&quot;));</b>
+<b class="nc">&nbsp;        romanceCatalog.addItem(new Item(&quot;P.S. I Love You&quot;, &quot;Romance&quot;, 8.99, 22, &quot;ps_i_love_you.jpg&quot;));</b>
+<b class="nc">&nbsp;        romanceCatalog.addItem(new Item(&quot;Pride and Prejudice&quot;, &quot;Romance&quot;, 8.50, 15, &quot;pride_prejudice.jpg&quot;));</b>
+<b class="nc">&nbsp;        romanceCatalog.addItem(new Item(&quot;Romeo and Juliet&quot;, &quot;Romance&quot;, 7.99, 20, &quot;romeo_juliet.jpg&quot;));</b>
+<b class="nc">&nbsp;        romanceCatalog.addItem(new Item(&quot;Twilight&quot;, &quot;Romance&quot;, 7.75, 25, &quot;twilight.jpg&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        fictionCatalog.addItem(new Item(&quot;1984&quot;, &quot;Fiction&quot;, 12.75, 30, &quot;1984.jpg&quot;));</b>
+<b class="nc">&nbsp;        fictionCatalog.addItem(new Item(&quot;Brave New World&quot;, &quot;Fiction&quot;, 10.99, 18, &quot;brave_new_world.jpg&quot;));</b>
+<b class="nc">&nbsp;        fictionCatalog.addItem(new Item(&quot;The Catch-22&quot;, &quot;Fiction&quot;, 9.75, 20, &quot;catch_22.jpg&quot;));</b>
+<b class="nc">&nbsp;        fictionCatalog.addItem(new Item(&quot;The Alchemist&quot;, &quot;Fiction&quot;, 11.50, 15, &quot;alchemist.jpg&quot;));</b>
+<b class="nc">&nbsp;        fictionCatalog.addItem(new Item(&quot;The Road&quot;, &quot;Fiction&quot;, 8.99, 22, &quot;the_road.jpg&quot;));</b>
+<b class="nc">&nbsp;        fictionCatalog.addItem(new Item(&quot;The Kite Runner&quot;, &quot;Fiction&quot;, 10.25, 25, &quot;kite_runner.jpg&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;Treasure Island&quot;, &quot;Adventure&quot;, 7.99, 18, &quot;treasure_island.jpg&quot;));</b>
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;Journey to the Center of the Earth&quot;, &quot;Adventure&quot;, 8.50, 20, &quot;journey_to_the_center.jpg&quot;));</b>
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;The Count of Monte Cristo&quot;, &quot;Adventure&quot;, 12.75, 15, &quot;count_of_monte_cristo.jpg&quot;));</b>
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;Around the World in Eighty Days&quot;, &quot;Adventure&quot;, 9.99, 22, &quot;around_the_world.jpg&quot;));</b>
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;The Adventures of Tom Sawyer&quot;, &quot;Adventure&quot;, 7.25, 25, &quot;tom_sawyer.jpg&quot;));</b>
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;The Hobbit&quot;, &quot;Adventure&quot;, 9.99, 25, &quot;hobbit.jpg&quot;));</b>
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;Harry Potter and the Sorcerer&#39;s Stone&quot;, &quot;Adventure&quot;, 11.50, 28, &quot;harry_potter_sorcerers_stone.jpg&quot;));</b>
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;Jurassic Park&quot;, &quot;Adventure&quot;, 9.99, 20, &quot;jurassic_park.jpg&quot;));</b>
+<b class="nc">&nbsp;        adventureCatalog.addItem(new Item(&quot;The Hunger Games&quot;, &quot;Adventure&quot;, 8.99, 30, &quot;hunger_games.jpg&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        mysteryCatalog.addItem(new Item(&quot;The Da Vinci Code&quot;, &quot;Mystery&quot;, 11.25, 18, &quot;da_vinci_code.jpg&quot;));</b>
+<b class="nc">&nbsp;        mysteryCatalog.addItem(new Item(&quot;The Girl with the Dragon Tattoo&quot;, &quot;Mystery&quot;, 10.75, 16, &quot;girl_with_dragon_tattoo.jpg&quot;));</b>
+<b class="nc">&nbsp;        mysteryCatalog.addItem(new Item(&quot;Gone Girl&quot;, &quot;Mystery&quot;, 13.25, 22, &quot;gone_girl.jpg&quot;));</b>
+<b class="nc">&nbsp;        mysteryCatalog.addItem(new Item(&quot;And Then There Were None&quot;, &quot;Mystery&quot;, 8.99, 18, &quot;and_then_there_were_none.jpg&quot;));</b>
+<b class="nc">&nbsp;        mysteryCatalog.addItem(new Item(&quot;The Hound of the Baskervilles&quot;, &quot;Mystery&quot;, 9.50, 20, &quot;hound_of_baskervilles.jpg&quot;));</b>
+<b class="nc">&nbsp;        mysteryCatalog.addItem(new Item(&quot;In Cold Blood&quot;, &quot;Mystery&quot;, 11.75, 15, &quot;in_cold_blood.jpg&quot;));</b>
+<b class="nc">&nbsp;        mysteryCatalog.addItem(new Item(&quot;The Silence of the Lambs&quot;, &quot;Mystery&quot;, 10.99, 22, &quot;silence_of_the_lambs.jpg&quot;));</b>
+<b class="nc">&nbsp;        mysteryCatalog.addItem(new Item(&quot;The Big Sleep&quot;, &quot;Mystery&quot;, 8.25, 25, &quot;big_sleep.jpg&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        historyCatalog.addItem(new Item(&quot;The Rise and Fall of the Third Reich&quot;, &quot;History&quot;, 16.99, 18, &quot;rise_and_fall.jpg&quot;));</b>
+<b class="nc">&nbsp;        historyCatalog.addItem(new Item(&quot;1491: New Revelations of the Americas Before Columbus&quot;, &quot;History&quot;, 13.50, 20, &quot;1491.jpg&quot;));</b>
+<b class="nc">&nbsp;        historyCatalog.addItem(new Item(&quot;Band of Brothers&quot;, &quot;History&quot;, 11.75, 15, &quot;band_of_brothers.jpg&quot;));</b>
+<b class="nc">&nbsp;        historyCatalog.addItem(new Item(&quot;1776&quot;, &quot;History&quot;, 12.99, 22, &quot;1776.jpg&quot;));</b>
+<b class="nc">&nbsp;        historyCatalog.addItem(new Item(&quot;The Wright Brothers&quot;, &quot;History&quot;, 10.25, 25, &quot;wright_brothers.jpg&quot;));</b>
+<b class="nc">&nbsp;        historyCatalog.addItem(new Item(&quot;The Guns of August&quot;, &quot;History&quot;, 14.50, 10, &quot;guns_of_august.jpg&quot;));</b>
+<b class="nc">&nbsp;        historyCatalog.addItem(new Item(&quot;The Art of War&quot;, &quot;History&quot;, 12.99, 14, &quot;art_of_war.jpg&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        scienceCatalog.addItem(new Item(&quot;A Brief History of Time&quot;, &quot;Science&quot;, 13.49, 22, &quot;brief_history_of_time.jpg&quot;));</b>
+<b class="nc">&nbsp;        scienceCatalog.addItem(new Item(&quot;The Martian&quot;, &quot;Science&quot;, 12.99, 20, &quot;martian.jpg&quot;));</b>
+<b class="nc">&nbsp;        scienceCatalog.addItem(new Item(&quot;Sapiens: A Brief History of Humankind&quot;, &quot;Science&quot;, 14.25, 18, &quot;sapiens.jpg&quot;));</b>
+<b class="nc">&nbsp;        scienceCatalog.addItem(new Item(&quot;Astrophysics for People in a Hurry&quot;, &quot;Science&quot;, 11.50, 20, &quot;astrophysics.jpg&quot;));</b>
+<b class="nc">&nbsp;        scienceCatalog.addItem(new Item(&quot;The Selfish Gene&quot;, &quot;Science&quot;, 10.99, 15, &quot;selfish_gene.jpg&quot;));</b>
+<b class="nc">&nbsp;        scienceCatalog.addItem(new Item(&quot;Cosmos&quot;, &quot;Science&quot;, 13.75, 22, &quot;cosmos.jpg&quot;));</b>
+<b class="nc">&nbsp;        scienceCatalog.addItem(new Item(&quot;The Double Helix&quot;, &quot;Science&quot;, 9.25, 25, &quot;double_helix.jpg&quot;));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void display(String name) {
+<b class="nc">&nbsp;        int row = 0, column = 0;</b>
+&nbsp;
+<b class="nc">&nbsp;        switch (name) {</b>
+&nbsp;            case &quot;classic&quot;:
+<b class="nc">&nbsp;                currList = classicCatalog;</b>
+<b class="nc">&nbsp;                grid = classic;</b>
+&nbsp;                break;
+&nbsp;            case &quot;romance&quot;:
+<b class="nc">&nbsp;                currList = romanceCatalog;</b>
+<b class="nc">&nbsp;                grid = romance;</b>
+&nbsp;                break;
+&nbsp;            case &quot;fiction&quot;:
+<b class="nc">&nbsp;                currList = fictionCatalog;</b>
+<b class="nc">&nbsp;                grid = fiction;</b>
+&nbsp;                break;
+&nbsp;            case &quot;adventure&quot;:
+<b class="nc">&nbsp;                currList = adventureCatalog;</b>
+<b class="nc">&nbsp;                grid = adventure;</b>
+&nbsp;                break;
+&nbsp;            case &quot;mystery&quot;:
+<b class="nc">&nbsp;                currList = mysteryCatalog;</b>
+<b class="nc">&nbsp;                grid = mystery;</b>
+&nbsp;                break;
+&nbsp;            case &quot;history&quot;:
+<b class="nc">&nbsp;                currList = historyCatalog;</b>
+<b class="nc">&nbsp;                grid = history;</b>
+&nbsp;                break;
+&nbsp;            case &quot;science&quot;:
+<b class="nc">&nbsp;                currList = scienceCatalog;</b>
+<b class="nc">&nbsp;                grid = science;</b>
+&nbsp;                break;
+&nbsp;            default:
+<b class="nc">&nbsp;                System.out.println(&quot;error calling display function in catalog controller&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        grid.getChildren().clear();</b>
+<b class="nc">&nbsp;        grid.getRowConstraints().clear();</b>
+<b class="nc">&nbsp;        grid.getColumnConstraints().clear();</b>
+&nbsp;
+&nbsp;
+&nbsp;        try {
+<b class="nc">&nbsp;            for (int i = 0; i &lt; currList.size(); i++) {</b>
+<b class="nc">&nbsp;                FXMLLoader load = new FXMLLoader();</b>
+<b class="nc">&nbsp;                load.setLocation(getClass().getResource(&quot;Item.fxml&quot;));</b>
+<b class="nc">&nbsp;                AnchorPane pane = load.load();</b>
+<b class="nc">&nbsp;                ItemController card = load.getController();</b>
+<b class="nc">&nbsp;                card.setData(currList.getAllItems().get(i));</b>
+&nbsp;
+<b class="nc">&nbsp;                if (column == 3) {</b>
+<b class="nc">&nbsp;                    column = 0;</b>
+<b class="nc">&nbsp;                    row += 1;</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                grid.add(pane, column++, row);</b>
+<b class="nc">&nbsp;                GridPane.setMargin(pane, new Insets(10));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void handleNavCartClick(MouseEvent event) {
+<b class="nc">&nbsp;        navigateTo(event, &quot;Cart.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void handleLogoutClick(MouseEvent event) {
+<b class="nc">&nbsp;        navigateTo(event, &quot;login.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void handleOrdersClick(MouseEvent event) {
+<b class="nc">&nbsp;        navigateTo(event, &quot;OrdersList.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void navigateTo(MouseEvent event, String nextPageFXML) {
+&nbsp;        Parent root;
+&nbsp;        try {
+<b class="nc">&nbsp;            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));</b>
+<b class="nc">&nbsp;            root = loader.load();</b>
+<b class="nc">&nbsp;            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();</b>
+<b class="nc">&nbsp;            Scene scene = new Scene(root);</b>
+<b class="nc">&nbsp;            stage.setScene(scene);</b>
+<b class="nc">&nbsp;            stage.show();}</b>
+<b class="nc">&nbsp;        catch (IOException e) {}</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc">&nbsp;        dataStored();</b>
+<b class="nc">&nbsp;        display(&quot;classic&quot;);</b>
+<b class="nc">&nbsp;        display(&quot;romance&quot;);</b>
+<b class="nc">&nbsp;        display(&quot;fiction&quot;);</b>
+<b class="nc">&nbsp;        display(&quot;adventure&quot;);</b>
+<b class="nc">&nbsp;        display(&quot;mystery&quot;);</b>
+<b class="nc">&nbsp;        display(&quot;history&quot;);</b>
+<b class="nc">&nbsp;        display(&quot;science&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        orders.setOnMouseClicked(this::handleOrdersClick);</b>
+<b class="nc">&nbsp;        navCart.setOnMouseClicked(this::handleNavCartClick);</b>
+<b class="nc">&nbsp;        logout.setOnMouseClicked(this::handleLogoutClick);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-24 23:58</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Item</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.testingproject</a>
+</div>
+
+<h1>Coverage Summary for Class: Item (com.example.testingproject)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Item</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    37.5%
+  </span>
+  <span class="absValue">
+    (3/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    38.1%
+  </span>
+  <span class="absValue">
+    (8/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.testingproject;
+&nbsp;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class Item {
+&nbsp;    private String name;
+&nbsp;    private String genre;
+&nbsp;    private double price;
+&nbsp;    private int stock;
+&nbsp;    private String image;
+&nbsp;
+&nbsp;    public Item (String name, String genre, double price, int stock, String image)
+<b class="fc">&nbsp;    {</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.genre = genre;</b>
+<b class="fc">&nbsp;        this.price = price;</b>
+<b class="fc">&nbsp;        this.stock = stock;</b>
+<b class="fc">&nbsp;        this.image = image;</b>
+&nbsp;    }
+&nbsp;///////
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object obj) {
+<b class="nc">&nbsp;        if (this == obj) {</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (obj == null || getClass() != obj.getClass()) {</b>
+<b class="nc">&nbsp;            return false;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        Item item = (Item) obj;</b>
+<b class="nc">&nbsp;        return Double.compare(item.price, price) == 0 &amp;&amp;</b>
+<b class="nc">&nbsp;                Objects.equals(name, item.name) &amp;&amp;</b>
+<b class="nc">&nbsp;                Objects.equals(genre, item.genre) &amp;&amp;</b>
+<b class="nc">&nbsp;                Objects.equals(image, item.image);</b>
+&nbsp;    }
+&nbsp;///////
+&nbsp;
+&nbsp;    public void ordered(int amount) {
+<b class="nc">&nbsp;        stock -= amount;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void unordered(int amount) {
+<b class="nc">&nbsp;        stock += amount;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getName() {
+<b class="nc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;//    public String getGenre() {
+&nbsp;//        return genre;
+&nbsp;//    }
+&nbsp;
+&nbsp;    public double getPrice() {
+<b class="fc">&nbsp;        return price;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getStock() {
+<b class="fc">&nbsp;        return stock;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getImage() {
+<b class="nc">&nbsp;        return &quot;/images/Books/&quot; + image;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-24 23:58</div>
+</div>
+</body>
+</html>

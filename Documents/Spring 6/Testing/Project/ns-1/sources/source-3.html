@@ -1,0 +1,171 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Catalog</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.testingproject</a>
+</div>
+
+<h1>Coverage Summary for Class: Catalog (com.example.testingproject)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Catalog</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.testingproject;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;public class Catalog {
+<b class="nc">&nbsp;    private static ArrayList&lt;Item&gt; allitems = new ArrayList&lt;&gt;();</b>
+&nbsp;    private ArrayList&lt;Item&gt; items;
+&nbsp;
+<b class="nc">&nbsp;    public Catalog() {</b>
+<b class="nc">&nbsp;        this.items = new ArrayList&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addItem(Item item) {
+<b class="nc">&nbsp;        items.add(item);</b>
+<b class="nc">&nbsp;        allitems.add(item);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /*public void removeItem(Item item) {
+&nbsp;        items.remove(item);
+&nbsp;        allitems.remove(item);
+&nbsp;    }*/
+&nbsp;
+&nbsp;    public static  Item getItem(String bookName) {
+<b class="nc">&nbsp;        for (Item item : allitems)</b>
+<b class="nc">&nbsp;            if (item.getName() == bookName)</b>
+<b class="nc">&nbsp;                return item;</b>
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Item&gt; getAllItems() {
+<b class="nc">&nbsp;        return items;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /*public boolean isIn(String bookName) {
+&nbsp;        for (Item item : items)
+&nbsp;            if (item.getName() == bookName)
+&nbsp;                return true;
+&nbsp;        return false;
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Item&gt; searchIn(String keyword) {
+&nbsp;        ArrayList&lt;Item&gt; searchResults = new ArrayList&lt;&gt;();
+&nbsp;        for (Item item : items)
+&nbsp;            if (item.getName().toLowerCase().contains(keyword.toLowerCase()))
+&nbsp;                searchResults.add(item);
+&nbsp;        return searchResults;
+&nbsp;    }*/
+&nbsp;
+&nbsp;    public int size(){
+<b class="nc">&nbsp;        return items.size();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-24 23:58</div>
+</div>
+</body>
+</html>

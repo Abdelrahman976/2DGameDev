@@ -1,0 +1,50 @@
+E-Commerce
+--------------
+- Database
+
+- Signup-/Login (Accounts) 
+
+- Catalogues (disable if out-of stock)
+
+- shopping cart (write OUT OF STOCK!)
+
+GUI- submitting orders (ask for address + phone no. + payment method)
+
+If Visa: 
+GUI- Payment  (show list of availabe visas *****454 + enter cvv 
+	   (If new -> visa data(name+visa number + date + cvv) -> add to list of visas)
+
+If visa/Cash:	(stock--) + Add to order list
+
+GUI- Order Managment: History of Order list + Order TRACKING
+
+
+- Catalogue + Shopping Cart [Mariam]
+- Payment + Submitting orders GUI [Malak]
+- Payment + Submitting orders Code [Reem]
+- Order Managment [Siveen]
+- Database + connection + Signup/Login [Hager]
+
+
+Tables
+- Accounts[{username} + password + FN + LN + phoneNo. + address] 
+- Payment[{username + Visa no.} + Visa name + Visa Date + CVV]
+- Shopping Cart [{username + itemId} + amount] (in shopping cart: itemPrice * amount)
+- Items[{itemId} + price + stock + section + itemType] (section + itemType for catalogue)
+- Order[{username + orderId} + totalPrice + status]
+- OrderedItems[{orderId + itemId}]
+
+
+
+
+
+
+
+- Admin GUI of items database -> edit on it)
+
+
+
+box   		OUT OF STOCK!
+another box
+
+[place order]

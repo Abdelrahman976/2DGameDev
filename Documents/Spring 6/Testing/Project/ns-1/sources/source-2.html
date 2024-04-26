@@ -1,0 +1,342 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > CartController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.testingproject</a>
+</div>
+
+<h1>Coverage Summary for Class: CartController (com.example.testingproject)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CartController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/86)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.testingproject;
+&nbsp;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.FXMLLoader;
+&nbsp;import javafx.fxml.Initializable;
+&nbsp;import javafx.geometry.Insets;
+&nbsp;import javafx.geometry.Pos;
+&nbsp;import javafx.scene.Node;
+&nbsp;import javafx.scene.Parent;
+&nbsp;import javafx.scene.Scene;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import javafx.scene.control.Label;
+&nbsp;import javafx.scene.input.MouseEvent;
+&nbsp;import javafx.scene.layout.*;
+&nbsp;import javafx.stage.Stage;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;
+<b class="nc">&nbsp;public class CartController implements Initializable {</b>
+&nbsp;    @FXML
+&nbsp;    private Label amount;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label bookName;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private VBox cart;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button decrease;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private HBox hb;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button increase;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label logout;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label orders;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Region navHome;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button orderNow;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label price;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label remove;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private VBox sideNav;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label totalPrice;
+&nbsp;
+<b class="nc">&nbsp;    private User user = EcomSystem.getCurrentSystem().getCurrentUser();</b>
+&nbsp;
+&nbsp;//    @FXML
+&nbsp;//    private ScrollPane cartScrollPane;
+&nbsp;
+&nbsp;    ///////////////EDIT BASED ON WHERE IT BE CALLED
+<b class="nc">&nbsp;    Cart c = user.getCart();</b>
+<b class="nc">&nbsp;    private Map&lt;Item, Integer&gt; cartItems = c.getItems();</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void handleNavHomeClick(MouseEvent event) {
+<b class="nc">&nbsp;        navigateToMouse(event, &quot;Catalog.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void handleOrdersClick(MouseEvent event) {
+<b class="nc">&nbsp;        navigateToMouse(event, &quot;OrdersList.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void handleLogoutClick(MouseEvent event) {
+<b class="nc">&nbsp;        navigateToMouse(event, &quot;login.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void increaseOnAction(ActionEvent event, Item item, Label label) {
+<b class="nc">&nbsp;        int newValue = c.increaseAmount(item);</b>
+<b class="nc">&nbsp;        label.setText(String.valueOf(newValue));</b>
+<b class="nc">&nbsp;        totalPrice.setText(String.valueOf((float)c.getTotalPrice() + &quot; $&quot;));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void decreaseOnAction(ActionEvent event, Item item, Label label) {
+<b class="nc">&nbsp;        int newValue = c.decreaseAmount(item);</b>
+<b class="nc">&nbsp;        if(newValue != 0) {</b>
+<b class="nc">&nbsp;            label.setText(String.valueOf(newValue));</b>
+<b class="nc">&nbsp;            totalPrice.setText(String.valueOf((float) c.getTotalPrice() + &quot; $&quot;));</b>
+&nbsp;        }
+&nbsp;        else
+<b class="nc">&nbsp;            GUIadding();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void removeOnAction(MouseEvent event, Item item) {
+<b class="nc">&nbsp;        c.removeFromCart(item);</b>
+<b class="nc">&nbsp;        GUIadding();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void orderNowOnAction(ActionEvent event) {
+<b class="nc">&nbsp;        navigateTo(event, &quot;orderRequest.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void navigateTo(ActionEvent event, String nextPageFXML) {
+&nbsp;        Parent root;
+&nbsp;        try {
+<b class="nc">&nbsp;            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));</b>
+<b class="nc">&nbsp;            root = loader.load();</b>
+<b class="nc">&nbsp;            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();</b>
+<b class="nc">&nbsp;            Scene scene = new Scene(root);</b>
+<b class="nc">&nbsp;            stage.setScene(scene);</b>
+<b class="nc">&nbsp;            stage.show();}</b>
+<b class="nc">&nbsp;        catch (IOException e) {}</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void navigateToMouse(MouseEvent event, String nextPageFXML) {
+&nbsp;        Parent root;
+&nbsp;        try {
+<b class="nc">&nbsp;            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));</b>
+<b class="nc">&nbsp;            root = loader.load();</b>
+<b class="nc">&nbsp;            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();</b>
+<b class="nc">&nbsp;            Scene scene = new Scene(root);</b>
+<b class="nc">&nbsp;            stage.setScene(scene);</b>
+<b class="nc">&nbsp;            stage.show();}</b>
+<b class="nc">&nbsp;        catch (IOException e) {}</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void GUIadding()
+&nbsp;    {
+<b class="nc">&nbsp;        cart.getChildren().clear();</b>
+<b class="nc">&nbsp;        if (cartItems.isEmpty()) {</b>
+<b class="nc">&nbsp;            Label empty = new Label(&quot;Empty Cart&quot;);</b>
+<b class="nc">&nbsp;            empty.setAlignment(Pos.CENTER);</b>
+<b class="nc">&nbsp;            empty.setStyle(&quot;-fx-font-weight: bold; -fx-font-size: 18px; -fx-padding: 150px;&quot;);</b>
+<b class="nc">&nbsp;            cart.getChildren().add(empty);</b>
+<b class="nc">&nbsp;            orderNow.setDisable(true);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            for (Map.Entry&lt;Item, Integer&gt; currItem : cartItems.entrySet()) {</b>
+<b class="nc">&nbsp;                if(currItem.getKey().getStock() == 0){</b>
+<b class="nc">&nbsp;                    c.removeFromCart(currItem.getKey());</b>
+&nbsp;                    continue;
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                HBox hb = new HBox();</b>
+<b class="nc">&nbsp;                hb.setPrefHeight(100); // Set preferred height for HBox</b>
+&nbsp;
+<b class="nc">&nbsp;                Label bookName = new Label(currItem.getKey().getName());</b>
+<b class="nc">&nbsp;                bookName.setPrefHeight(60);</b>
+<b class="nc">&nbsp;                bookName.setPrefWidth(160);</b>
+<b class="nc">&nbsp;                bookName.setStyle(&quot;-fx-font-size: 14px;&quot;);</b>
+<b class="nc">&nbsp;                HBox.setMargin(bookName, new Insets(20, 10, 0, 25)); // Set margins</b>
+&nbsp;
+<b class="nc">&nbsp;                Label price = new Label(String.valueOf(currItem.getKey().getPrice()) + &quot; $&quot;);</b>
+<b class="nc">&nbsp;                price.setPrefHeight(60);</b>
+<b class="nc">&nbsp;                price.setPrefWidth(81);</b>
+<b class="nc">&nbsp;                price.setStyle(&quot;-fx-font-size: 14px;&quot;);</b>
+<b class="nc">&nbsp;                HBox.setMargin(price, new Insets(20, 0, 0, 0)); // Set margins</b>
+&nbsp;
+<b class="nc">&nbsp;                Button decrease = new Button(&quot;-&quot;);</b>
+<b class="nc">&nbsp;                decrease.setPrefHeight(26);</b>
+<b class="nc">&nbsp;                decrease.setPrefWidth(28);</b>
+<b class="nc">&nbsp;                HBox.setMargin(decrease, new Insets(38, 0, 0, 0)); // Set margins</b>
+&nbsp;
+&nbsp;
+&nbsp;                Integer amountValue;
+<b class="nc">&nbsp;                if(currItem.getValue() &gt; currItem.getKey().getStock())</b>
+<b class="nc">&nbsp;                    amountValue = currItem.getKey().getStock();</b>
+&nbsp;                else
+<b class="nc">&nbsp;                    amountValue = currItem.getValue();</b>
+&nbsp;
+<b class="nc">&nbsp;                Label amount = new Label(String.valueOf(amountValue));</b>
+<b class="nc">&nbsp;                amount.setAlignment(javafx.geometry.Pos.CENTER);</b>
+<b class="nc">&nbsp;                amount.setPrefHeight(60);</b>
+<b class="nc">&nbsp;                amount.setPrefWidth(45);</b>
+<b class="nc">&nbsp;                HBox.setMargin(amount, new Insets(20, 0, 0, 0)); // Set margins</b>
+&nbsp;
+<b class="nc">&nbsp;                Button increase = new Button(&quot;+&quot;);</b>
+<b class="nc">&nbsp;                increase.setPrefHeight(26);</b>
+<b class="nc">&nbsp;                increase.setPrefWidth(28);</b>
+<b class="nc">&nbsp;                HBox.setMargin(increase, new Insets(38, 0, 0, 0)); // Set margins</b>
+&nbsp;
+<b class="nc">&nbsp;                Label remove = new Label(&quot;?&quot;);</b>
+<b class="nc">&nbsp;                remove.setPrefHeight(60);</b>
+<b class="nc">&nbsp;                remove.setPrefWidth(45);</b>
+<b class="nc">&nbsp;                remove.setStyle(&quot;-fx-font-size: 30px;&quot;);</b>
+<b class="nc">&nbsp;                HBox.setMargin(remove, new Insets(25, 0, 0, 15)); // Set margins</b>
+&nbsp;
+<b class="nc">&nbsp;                hb.getChildren().addAll(bookName, price, decrease, amount, increase, remove);</b>
+<b class="nc">&nbsp;                cart.getChildren().add(hb);</b>
+&nbsp;
+<b class="nc">&nbsp;                increase.setOnAction(event -&gt; increaseOnAction(event, currItem.getKey(), amount));</b>
+<b class="nc">&nbsp;                decrease.setOnAction(event -&gt; decreaseOnAction(event, currItem.getKey(), amount));</b>
+<b class="nc">&nbsp;                remove.setOnMouseClicked(event -&gt; removeOnAction(event, currItem.getKey()));</b>
+&nbsp;            }
+<b class="nc">&nbsp;            totalPrice.setText(String.valueOf((float)c.getTotalPrice() + &quot; $&quot;));</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc">&nbsp;        GUIadding();</b>
+&nbsp;
+<b class="nc">&nbsp;        navHome.setOnMouseClicked(this::handleNavHomeClick);</b>
+<b class="nc">&nbsp;        orders.setOnMouseClicked(this::handleOrdersClick);</b>
+<b class="nc">&nbsp;        logout.setOnMouseClicked(this::handleLogoutClick);</b>
+<b class="nc">&nbsp;        orderNow.setOnAction(event -&gt; orderNowOnAction(event));</b>
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-24 23:58</div>
+</div>
+</body>
+</html>

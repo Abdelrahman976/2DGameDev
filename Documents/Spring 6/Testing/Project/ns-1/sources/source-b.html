@@ -1,0 +1,234 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Order</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.testingproject</a>
+</div>
+
+<h1>Coverage Summary for Class: Order (com.example.testingproject)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Order</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/46)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.testingproject;
+&nbsp;
+&nbsp;import java.time.LocalTime;
+&nbsp;import java.util.*;
+&nbsp;import java.time.temporal.ChronoUnit;
+&nbsp;
+&nbsp;public class Order {
+&nbsp;    private Cart cart;
+&nbsp;    private double shippingPrice;
+&nbsp;    private double totalPrice;
+&nbsp;    private String status;
+&nbsp;    private String OrderID;
+&nbsp;    private LocalTime time;
+&nbsp;    private String Address;
+&nbsp;    private String Phonenumber;
+&nbsp;
+&nbsp;    //To save which order to take it from RequestOrder to payment(visa) windows
+<b class="nc">&nbsp;    public static Order currrentOrder = null;</b>
+&nbsp;
+&nbsp;    //For Selected order from order list to Order mangment
+<b class="nc">&nbsp;    public static Order SelectedOrder = null;</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;    public Order(String Address, String Phonenumber){</b>
+<b class="nc">&nbsp;        this.Address = Address;</b>
+<b class="nc">&nbsp;        this.Phonenumber = Phonenumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Order (Cart cart, String Address, String Phonenumber)
+<b class="nc">&nbsp;    {</b>
+<b class="nc">&nbsp;        this.cart = cart;</b>
+<b class="nc">&nbsp;        this.Address = Address;</b>
+<b class="nc">&nbsp;        this.Phonenumber = Phonenumber;</b>
+<b class="nc">&nbsp;        totalPrice = calc_totalPrice(cart.getTotalPrice());</b>
+<b class="nc">&nbsp;        status = &quot;Order_Placed&quot;;</b>
+<b class="nc">&nbsp;        this.OrderID = OrderIDGenerate();</b>
+<b class="nc">&nbsp;        time = LocalTime.now();</b>
+&nbsp;
+<b class="nc">&nbsp;        removeFromStock();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void removeFromStock(){
+<b class="nc">&nbsp;        for (Map.Entry&lt;Item, Integer&gt; currItem: cart.getItems().entrySet()){</b>
+<b class="nc">&nbsp;            Item item = currItem.getKey();</b>
+<b class="nc">&nbsp;            Integer amount = currItem.getValue();</b>
+&nbsp;
+<b class="nc">&nbsp;            item.ordered(amount);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public long getTimeDifferenceInSeconds(LocalTime endTime) {
+<b class="nc">&nbsp;        return this.time.until(endTime, ChronoUnit.SECONDS);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void scheduleStatusUpdate(LocalTime endTime) {
+<b class="nc">&nbsp;        int unitTime = 15;</b>
+<b class="nc">&nbsp;        long TimeDiff = getTimeDifferenceInSeconds(endTime);</b>
+<b class="nc">&nbsp;        if(TimeDiff &lt; unitTime)</b>
+<b class="nc">&nbsp;            status = &quot;Order_Placed&quot;;</b>
+<b class="nc">&nbsp;        else if(TimeDiff &lt; 2*unitTime)</b>
+<b class="nc">&nbsp;            status = &quot;Packed&quot;;</b>
+<b class="nc">&nbsp;        else if(TimeDiff &lt; 3*unitTime)</b>
+<b class="nc">&nbsp;            status = &quot;Dispatch&quot;;</b>
+&nbsp;        else
+<b class="nc">&nbsp;            status = &quot;Delivered&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double calc_totalPrice(double totPrice)
+&nbsp;    {
+<b class="nc">&nbsp;        if(totPrice &lt; 1000)</b>
+<b class="nc">&nbsp;            shippingPrice = 100;</b>
+&nbsp;
+&nbsp;        else
+<b class="nc">&nbsp;            shippingPrice = 0;</b>
+&nbsp;
+<b class="nc">&nbsp;        return totPrice + shippingPrice;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private String OrderIDGenerate()
+&nbsp;    {
+<b class="nc">&nbsp;        String randomUUID = UUID.randomUUID().toString().replaceAll(&quot;-&quot;, &quot;&quot;).substring(0, 6);</b>
+<b class="nc">&nbsp;        String orderId = &quot;ORD-&quot; + randomUUID;</b>
+&nbsp;
+<b class="nc">&nbsp;        return orderId;</b>
+&nbsp;    }
+&nbsp;    public String getStatus(){
+<b class="nc">&nbsp;        return status;</b>
+&nbsp;    }
+&nbsp;    public String getPhoneNumber(){
+<b class="nc">&nbsp;        return Phonenumber;</b>
+&nbsp;    }
+&nbsp;    public String getAddress(){
+<b class="nc">&nbsp;        return Address;</b>
+&nbsp;    }
+&nbsp;    public void setStatus(String newStatus){
+<b class="nc">&nbsp;        this.status=newStatus;</b>
+&nbsp;    }
+&nbsp;    public String getOrderID(){
+<b class="nc">&nbsp;        return this.OrderID;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Cart getCart() {
+<b class="nc">&nbsp;        return cart;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void cancel_order() {
+<b class="nc">&nbsp;        setStatus(&quot;Cancelled&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Map.Entry&lt;Item, Integer&gt; currItem: cart.getItems().entrySet()){</b>
+<b class="nc">&nbsp;            Item item = currItem.getKey();</b>
+<b class="nc">&nbsp;            Integer amount = currItem.getValue();</b>
+&nbsp;
+<b class="nc">&nbsp;            item.unordered(amount);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-24 23:58</div>
+</div>
+</body>
+</html>

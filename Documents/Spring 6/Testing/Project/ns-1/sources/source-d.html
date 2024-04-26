@@ -1,0 +1,272 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > OrderRequestController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.testingproject</a>
+</div>
+
+<h1>Coverage Summary for Class: OrderRequestController (com.example.testingproject)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OrderRequestController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/54)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.testingproject;
+&nbsp;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.FXMLLoader;
+&nbsp;import javafx.scene.Node;
+&nbsp;import javafx.scene.Parent;
+&nbsp;import javafx.scene.Scene;
+&nbsp;import javafx.scene.control.*;
+&nbsp;import javafx.scene.layout.AnchorPane;
+&nbsp;import javafx.stage.Stage;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;
+<b class="nc">&nbsp;public class OrderRequestController {</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private AnchorPane Data;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private AnchorPane Main;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TextField address;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button backBtn;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private RadioButton existingRadioBox;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private ChoiceBox&lt;String&gt; methodChoiceBox;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private RadioButton newRadioBox;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button nextBtn;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TextField phoneNo;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private ToggleGroup visaSelection;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label MessageLabel;
+&nbsp;
+&nbsp;    private Alert alert;
+&nbsp;    
+<b class="nc">&nbsp;    private User user = EcomSystem.getCurrentSystem().getCurrentUser();</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    void nextBtnOnAction(ActionEvent event, String selectedOption, String selectedRadio) {
+<b class="nc">&nbsp;        String ad = address.getText();</b>
+<b class="nc">&nbsp;        String phoneNumber = phoneNo.getText();</b>
+&nbsp;
+&nbsp;        // Check if any of the text fields are empty
+<b class="nc">&nbsp;        if (ad.isEmpty() || phoneNumber.isEmpty()) {</b>
+<b class="nc">&nbsp;            MessageLabel.setText(&quot;Please fill in all fields&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if(phoneNumber.length() &lt; 11){ // Corrected method to get text length</b>
+<b class="nc">&nbsp;            MessageLabel.setText(&quot;Phone number too short&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        Order o = new Order(ad, phoneNumber);</b>
+<b class="nc">&nbsp;        if (selectedOption.equals(&quot;Cash&quot;)) {</b>
+<b class="nc">&nbsp;            Cart car = new Cart(user.getCart());</b>
+<b class="nc">&nbsp;            Order order = new Order(car, o.getAddress(), o.getPhoneNumber());</b>
+<b class="nc">&nbsp;            Order.SelectedOrder = order;</b>
+<b class="nc">&nbsp;            user.addOrder(Order.SelectedOrder);</b>
+&nbsp;
+<b class="nc">&nbsp;            alert = new Alert(Alert.AlertType.INFORMATION);</b>
+<b class="nc">&nbsp;            alert.setTitle(&quot;Information Message&quot;);</b>
+<b class="nc">&nbsp;            alert.setHeaderText(null);</b>
+<b class="nc">&nbsp;            alert.setContentText(&quot;Order added successully!&quot;);</b>
+<b class="nc">&nbsp;            alert.showAndWait();</b>
+&nbsp;
+<b class="nc">&nbsp;            navigateTo(event, &quot;Catalog.fxml&quot;);</b>
+&nbsp;        }
+&nbsp;        else {
+<b class="nc">&nbsp;            Order.currrentOrder = o;</b>
+<b class="nc">&nbsp;            if(selectedRadio.equals(&quot;Existing Visa&quot;)){</b>
+<b class="nc">&nbsp;                User currentUser = user;</b>
+<b class="nc">&nbsp;                if (currentUser.get_visas().isEmpty()){</b>
+<b class="nc">&nbsp;                    MessageLabel.setText(&quot;You have no existing visas&quot;);</b>
+&nbsp;                    return;
+&nbsp;                }
+<b class="nc">&nbsp;                navigateTo(event, &quot;paymentExistingCard.fxml&quot;);</b>
+&nbsp;
+&nbsp;            }
+&nbsp;            else{
+<b class="nc">&nbsp;                navigateTo(event, &quot;payment.fxml&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    void backBtnOnAction(ActionEvent event)  {
+<b class="nc">&nbsp;        navigateTo(event, &quot;Catalog.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void navigateTo(ActionEvent event, String nextPageFXML) {
+&nbsp;        Parent root;
+&nbsp;        try {
+<b class="nc">&nbsp;            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));</b>
+<b class="nc">&nbsp;            root = loader.load();</b>
+<b class="nc">&nbsp;            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();</b>
+<b class="nc">&nbsp;            Scene scene = new Scene(root);</b>
+<b class="nc">&nbsp;            stage.setScene(scene);</b>
+<b class="nc">&nbsp;            stage.show();}</b>
+<b class="nc">&nbsp;        catch (IOException e) {}</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void initialize() {
+&nbsp;
+<b class="nc">&nbsp;        methodChoiceBox.getItems().addAll(&quot;Visa&quot;, &quot;Cash&quot;);</b>
+<b class="nc">&nbsp;        methodChoiceBox.getSelectionModel().selectFirst();</b>
+&nbsp;
+&nbsp;        // Add event listener to the ChoiceBox
+<b class="nc">&nbsp;        methodChoiceBox.setOnAction(event -&gt; {</b>
+<b class="nc">&nbsp;            String selectedOption = methodChoiceBox.getValue();</b>
+<b class="nc">&nbsp;            if (selectedOption.equals(&quot;Cash&quot;)) {</b>
+<b class="nc">&nbsp;                existingRadioBox.setVisible(false);</b>
+<b class="nc">&nbsp;                newRadioBox.setVisible(false);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                existingRadioBox.setVisible(true);</b>
+<b class="nc">&nbsp;                newRadioBox.setVisible(true);</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        phoneNo.textProperty().addListener((observable, oldValue, newValue) -&gt; {</b>
+<b class="nc">&nbsp;            if (!newValue.matches(&quot;\\d*&quot;)) {</b>
+<b class="nc">&nbsp;                phoneNo.setText(newValue.replaceAll(&quot;[^\\d]&quot;, &quot;&quot;));</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (newValue.length() &gt; 11) {</b>
+<b class="nc">&nbsp;                phoneNo.setText(oldValue); // Restore the previous value if it exceeds 11 characters</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        nextBtn.setOnAction(event -&gt; {</b>
+<b class="nc">&nbsp;            String selectedOption = methodChoiceBox.getValue();</b>
+<b class="nc">&nbsp;            String selectedRadio = ((RadioButton) visaSelection.getSelectedToggle()).getText();</b>
+<b class="nc">&nbsp;            nextBtnOnAction(event, selectedOption, selectedRadio);</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        backBtn.setOnAction(event -&gt; backBtnOnAction(event));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-24 23:58</div>
+</div>
+</body>
+</html>

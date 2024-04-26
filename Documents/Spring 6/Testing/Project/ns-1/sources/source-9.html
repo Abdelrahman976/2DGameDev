@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > LoginController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.testingproject</a>
+</div>
+
+<h1>Coverage Summary for Class: LoginController (com.example.testingproject)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LoginController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.testingproject;
+&nbsp;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.FXMLLoader;
+&nbsp;import javafx.scene.Node;
+&nbsp;import javafx.scene.Parent;
+&nbsp;import javafx.scene.Scene;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import javafx.scene.control.Label;
+&nbsp;import javafx.scene.control.PasswordField;
+&nbsp;import javafx.scene.control.TextField;
+&nbsp;import javafx.scene.layout.AnchorPane;
+&nbsp;import javafx.stage.Stage;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+<b class="nc">&nbsp;public class LoginController {</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button CancelButton;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button LoginButton;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label LoginMessageLabel;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private AnchorPane LoginPane;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private PasswordField PasswordTF;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button SignupButton;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TextField UsernameTF;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    void CancelButtonOnAction(ActionEvent event) {
+<b class="nc">&nbsp;        UsernameTF.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;        PasswordTF.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;        LoginMessageLabel.setText(&quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    void LoginButtonOnAction(ActionEvent event) {
+<b class="nc">&nbsp;        String username = UsernameTF.getText();</b>
+<b class="nc">&nbsp;        String password = PasswordTF.getText();</b>
+&nbsp;
+&nbsp;        // Check if any of the text fields are empty
+<b class="nc">&nbsp;        if (username.isEmpty() || password.isEmpty()) {</b>
+<b class="nc">&nbsp;            LoginMessageLabel.setText(&quot;Please fill in all fields&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if(EcomSystem.getCurrentSystem().login(username, password)){</b>
+<b class="nc">&nbsp;            navigateTo(event, &quot;Catalog.fxml&quot;);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            LoginMessageLabel.setText(&quot;Wrong username or password&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    void SignupButtonOnAction(ActionEvent event) {
+<b class="nc">&nbsp;        navigateTo(event, &quot;Signup.fxml&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void initialize() {
+<b class="nc">&nbsp;        LoginButton.setOnAction(event -&gt; LoginButtonOnAction(event));</b>
+<b class="nc">&nbsp;        CancelButton.setOnAction(event -&gt; CancelButtonOnAction(event));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void navigateTo(ActionEvent event, String nextPageFXML) {
+&nbsp;        Parent root;
+&nbsp;        try {
+<b class="nc">&nbsp;            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));</b>
+<b class="nc">&nbsp;            root = loader.load();</b>
+<b class="nc">&nbsp;            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();</b>
+<b class="nc">&nbsp;            Scene scene = new Scene(root);</b>
+<b class="nc">&nbsp;            stage.setScene(scene);</b>
+<b class="nc">&nbsp;            stage.show();</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch (IOException e) {}</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-24 23:58</div>
+</div>
+</body>
+</html>
