@@ -13,6 +13,7 @@ TagManager:
   - Barrier
   - Wall
   - Angel
+  - Attack
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Attack
+  - Enemy
+  - Player
   - 
   - 
   - 

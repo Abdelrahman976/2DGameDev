@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
             health -= 10;
             StartCoroutine(Sleep());
         }
+        
     }
     IEnumerator Sleep()
     {
